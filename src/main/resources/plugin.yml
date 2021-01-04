@@ -1,0 +1,13 @@
+name: BlockPartyWAX
+main: me.maximus1027.BlockParty.Main
+version: 1.0
+depend: [WorldEdit]
+
+commands:
+  bpwand:
+    description: Gives you the blockparty admin wand.
+  blockparty:
+    aliases: bp
+    description: PLACEHOLDER.
+  testcmd:
+    description: testt
