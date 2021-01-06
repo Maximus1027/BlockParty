@@ -14,6 +14,8 @@ public class BPHelp {
         plr.sendMessage(e("&e/bp start &7&m-&r &fCommand to &astart &fthe game &7&o(Selected points are required)"));
         plr.sendMessage(e("&e/bp stop &7&m-&r &fCommand to &cstop &fthe game"));
         plr.sendMessage(e("&e/bp join &7&m-&r &fCommand to join the game &7&o(No permissions required)"));
+        plr.sendMessage(e("&e/bp jointoggle &7&m-&r &fCommand to toggle the &6/bp join &fcommand"));
+        plr.sendMessage(e("&e/bp setspawn &7&m-&r &fCommand to set the BlockParty's game spawn."));
         plr.sendMessage(e("&e/bp loadfloor <floorname> &7&m-&r &fLoads a specific Block Party floor"));
         plr.sendMessage(e("&e/bp listfloors &7&m-&r &fLists the current Block Party floors loaded"));
     }
