@@ -111,7 +111,7 @@ public class BPHandler implements CommandExecutor {
                     Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&6"+plr.getName()+"&e is ready to disco!"));
                 }
 
-                plr.teleport(new Location(plr.getWorld(), BPHandler.plugin.getConfig().getDouble("gameSpawn.x"), BPHandler.plugin.getConfig().getDouble("gameSpawn.y"), BPHandler.plugin.getConfig().getDouble("gameSpawn.z")));
+                plr.teleport(new Location(plr.getWorld(), BPHandler.plugin.getConfig().getDouble("gameSpawn.x"), BPHandler.plugin.getConfig().getDouble("gameSpawn.y")+1, BPHandler.plugin.getConfig().getDouble("gameSpawn.z")));
 
                 return false;
             }

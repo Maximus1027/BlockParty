@@ -14,7 +14,7 @@ public class TeleportPlayers {
     public static void teleportPlayers(List<Player> players){
         System.out.println(BPHandler.plugin.getConfig().getDouble("gameSpawn.x"));
         for(Player plr : players){
-            plr.teleport(new Location(plr.getWorld(), BPHandler.plugin.getConfig().getDouble("gameSpawn.x"), BPHandler.plugin.getConfig().getDouble("gameSpawn.y"), BPHandler.plugin.getConfig().getDouble("gameSpawn.z")));
+            plr.teleport(new Location(plr.getWorld(), BPHandler.plugin.getConfig().getDouble("gameSpawn.x"), BPHandler.plugin.getConfig().getDouble("gameSpawn.y")+1, BPHandler.plugin.getConfig().getDouble("gameSpawn.z")));
 
         }
     }
