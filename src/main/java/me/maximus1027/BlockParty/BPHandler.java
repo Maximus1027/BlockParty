@@ -37,6 +37,7 @@ import java.util.*;
 public class BPHandler implements CommandExecutor {
     public static HashMap<Block, ItemStack> Blocks = new HashMap<Block, ItemStack>();
     public boolean test2 = false;
+    boolean canJoin = false;
 
     //Returns ItemStack version of a random block from Floor.
     public static ItemStack getRandom(HashMap<Block, ItemStack> blocks){
@@ -46,8 +47,8 @@ public class BPHandler implements CommandExecutor {
 
     //Gets a randomly chosen floor from the "floors" folder.
     public File getRandomFloor(){
-        Path path = Paths.get("plugins//BlockPartyWAX//Floors");
-        File[] floors = new File(String.valueOf(path)).listFiles();
+        Path path = Paths.get("/Floors");
+        File[] floors = new File(plugin.getDataFolder(), String.valueOf(path)).listFiles();
 
 
         int rnd = new Random().nextInt(floors.length);
@@ -84,6 +85,12 @@ public class BPHandler implements CommandExecutor {
         //Command to join the game.
 
         if(args[0].equalsIgnoreCase("join")){
+            //Checks if you are allowed to join BP.
+            if(!canJoin){
+                plr.sendMessage(ChatColor.RED + "You cannot join the BlockParty at this time!");
+                return false;
+            }
+
 
             //If Player is already in ArrayList and if game is not going.
             if(bpPlayers.contains(plr) && BPStick.wandEnabled){
@@ -104,6 +111,7 @@ public class BPHandler implements CommandExecutor {
                     Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&6"+plr.getName()+"&e is ready to disco!"));
                 }
 
+                plr.teleport(new Location(plr.getWorld(), BPHandler.plugin.getConfig().getDouble("gameSpawn.x"), BPHandler.plugin.getConfig().getDouble("gameSpawn.y"), BPHandler.plugin.getConfig().getDouble("gameSpawn.z")));
 
                 return false;
             }
@@ -312,6 +320,17 @@ public class BPHandler implements CommandExecutor {
 
         }
 
+        //Admin command to enable/discord bp joining. (Rep Requested).
+        if(args[0].equalsIgnoreCase("jointoggle")){
+            if(canJoin){
+                canJoin = false;
+                plr.sendMessage(ChatColor.GREEN+"Blockparty Joining has been DISABLED!");
+            }else{
+                canJoin = true;
+                plr.sendMessage(ChatColor.GREEN+"Blockparty Joining has been ENABLED!");
+            }
+        }
+
         //Shows the list of floors loaded. (BlockPartyWax/Floors)
         if(args[0].equalsIgnoreCase("listfloors")){
             FloorListing.listFloors(plr);
@@ -361,7 +380,7 @@ public class BPHandler implements CommandExecutor {
             WorldEditPlugin worldEditPlugin = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
             File file = null;
             try {
-                file = new File("plugins/BlockPartyWAX/Floors/" + args[1] + ".schematic");
+                file = new File(plugin.getDataFolder(), "Floors/" + args[1] + ".schematic");
             } catch (NullPointerException e){
                 plr.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cThe floor &6"+args[1]+"&c does not exist!"));
                 e.printStackTrace();
