@@ -181,7 +181,7 @@ public class BPHandler implements CommandExecutor {
                                 WorldEditPlugin worldEditPlugin = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
                                 File file = new File("plugins/BlockPartyWAX/Floors/jbmcfloor.schematic");
                                 Location location = plr.getLocation();
-                                EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), 1000);
+                                EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), -1);
                                 CuboidClipboard clipboard = null;
                                 try {
                                     clipboard = MCEditSchematicFormat.getFormat(file).load(file);
@@ -271,7 +271,7 @@ public class BPHandler implements CommandExecutor {
                             WorldEditPlugin worldEditPlugin = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
                             File file = getRandomFloor();
                             Location location = plr.getLocation();
-                            EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), 1000);
+                            EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), -1);
                             CuboidClipboard clipboard = null;
                             try {
                                 clipboard = MCEditSchematicFormat.getFormat(file).load(file);
@@ -359,7 +359,7 @@ public class BPHandler implements CommandExecutor {
             WorldEditPlugin worldEditPlugin = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
             File file = getRandomFloor();
             Location location = plr.getLocation();
-            EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), 1000);
+            EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), -1);
             CuboidClipboard clipboard = null;
             try {
                 clipboard = MCEditSchematicFormat.getFormat(file).load(file);
@@ -451,12 +451,13 @@ public class BPHandler implements CommandExecutor {
                 bpPLR.getInventory().clear();
             }
             bpPlayers.clear();
+            bpPlayers.clear();
 
 
             WorldEditPlugin worldEditPlugin = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
             File file = new File("plugins/BlockPartyWAX/Floors/jbmcfloor.schematic");
             Location location = BPStick.firstLocation;
-            EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), 1000);
+            EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), -1);
             CuboidClipboard clipboard = null;
             try {
                 clipboard = MCEditSchematicFormat.getFormat(file).load(file);

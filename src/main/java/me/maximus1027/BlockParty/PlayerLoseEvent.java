@@ -52,7 +52,7 @@ public class PlayerLoseEvent implements Listener {
                         WorldEditPlugin worldEditPlugin = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
                         File file = new File("plugins/BlockPartyWAX/Floors/jbmcfloor.schematic");
                         Location location = BPStick.firstLocation;
-                        EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), 1000);
+                        EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), -1);
                         CuboidClipboard clipboard = null;
                         try {
                             clipboard = MCEditSchematicFormat.getFormat(file).load(file);
@@ -95,7 +95,7 @@ public class PlayerLoseEvent implements Listener {
                         WorldEditPlugin worldEditPlugin = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
                         File file = new File("plugins/BlockPartyWAX/Floors/jbmcfloor.schematic");
                         Location location = BPStick.firstLocation;
-                        EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), 1000);
+                        EditSession session = worldEditPlugin.getWorldEdit().getEditSessionFactory().getEditSession(new BukkitWorld(location.getWorld()), -1);
                         CuboidClipboard clipboard = null;
                         try {
                             clipboard = MCEditSchematicFormat.getFormat(file).load(file);
